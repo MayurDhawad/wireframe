@@ -1,0 +1,46 @@
+{
+  "userdata": [
+    {
+      "name": "Mayur",
+      "email": "Dhawad@gmail.com",
+      "password": "435345",
+      "cnfpassword": "rege",
+      "id": 1
+    },
+    {
+      "name": "Dhawad",
+      "email": "dhawad@gmail.com",
+      "password": "dac",
+      "cnfpassword": "sca",
+      "id": 2
+    },
+    {
+      "name": "dvsdds",
+      "email": "sdv@sac.sac",
+      "password": "saccsa",
+      "cnfpassword": "sac",
+      "id": 3
+    },
+    {
+      "name": "name",
+      "email": "email",
+      "password": "password",
+      "cnfpassword": "cnfpassword",
+      "id": 4
+    },
+    {
+      "name": "Hello",
+      "email": "fff",
+      "password": "wrwerw",
+      "cnfpassword": "sfdds",
+      "id": 6
+    },
+    {
+      "name": "asc",
+      "email": "acs@cac.sc",
+      "password": "scsc",
+      "cnfpassword": "scscs",
+      "id": 7
+    }
+  ]
+}
