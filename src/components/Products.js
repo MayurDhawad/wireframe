@@ -44,7 +44,7 @@ const Products = () => {
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  let filteredProducts = searchTerm == '' ? filterProducts : searchProducts
+  let filteredProducts = searchTerm === '' ? filterProducts : searchProducts
 
   filteredProducts = filteredProducts.slice(0, 20);
 
