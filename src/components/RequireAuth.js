@@ -6,7 +6,7 @@ export const RequireAuth = ({childern}) => {
     const auth = useAuth()
 
     if(!auth.user){
-        return <Navigate to='/login'></Navigate>
+        return <Navigate to='/login' />
     }
 
   return childern

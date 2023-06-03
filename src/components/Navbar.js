@@ -4,6 +4,10 @@ import { useAuth } from "./auth";
 
 function Navbar() {
   const auth = useAuth();
+
+  const logout = () =>{
+    auth.logout()
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -29,8 +33,8 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/users">
-                Users
+              <Link className="nav-link" to="/products">
+                Products
               </Link>
             </li>
           </ul>
@@ -46,6 +50,20 @@ function Navbar() {
               {!auth.user && (
                 <Link className="nav-link" to="/registration">
                   Registration
+                </Link>
+              )}
+            </li>
+            <li className="nav-item">
+              {auth.user && (
+                <Link className="nav-link" onClick={logout}>
+                  Logout
+                </Link>
+              )}
+            </li>
+            <li className="nav-item">
+              {auth.user && (
+                <Link className="nav-link" to="/profile">
+                  Profile
                 </Link>
               )}
             </li>
