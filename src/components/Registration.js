@@ -35,7 +35,8 @@ const Registration = () => {
 
     localStorage.setItem("token", "userToken");
     auth.login(user)
-    navigate('/')
+    localStorage.setItem("token", "newUser");
+    navigate("/products", { replace: true });
   };
 
   return (

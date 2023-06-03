@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { FaTrash } from 'react-icons/fa'
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -28,9 +29,11 @@ const Products = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleDelete = (values) => {
-      console.log(values);
-  }
+  const handleDelete = (productId) => {
+    const updatedProducts = products.filter(product => product.id !== productId);
+    setProducts(updatedProducts);
+  };
+
 
   let filterProducts =
     filter === "All"
@@ -38,10 +41,12 @@ const Products = () => {
       : products.filter((product) => product.brand === filter);
 
   let searchProducts = products.filter((product) =>
-    product.brand.toLowerCase().includes(searchTerm.toLowerCase())
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const filteredProducts = searchTerm == '' ? filterProducts : searchProducts
+  let filteredProducts = searchTerm == '' ? filterProducts : searchProducts
+
+  filteredProducts = filteredProducts.slice(0, 20);
 
   return (
     <>
@@ -56,6 +61,10 @@ const Products = () => {
             <option value="All">All</option>
             <option value="Apple">Apple</option>
             <option value="Samsung">Samsung</option>
+            <option value="OPPO">OPPO</option>
+            <option value="Huawei">Huawei</option>
+            <option value="Infinix">Infinix</option>
+            <option value="HP Pavilion">HP Pavilion</option>
           </select>
           </div>
           <div className="col-3">
@@ -68,22 +77,24 @@ const Products = () => {
           />
           </div>
         </div>
-        <ul className="list-group">
+        {filteredProducts.length > 0 ? <ul className="list-group">
           <table className="table table-bordered">
-            <thead>
+            <thead className="table-success ">
               <tr>
+                <th>Sr No.</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Brand</th>
                 <th>Price</th>
                 <th>Image</th>
-                <th></th>
+                <th>Remove</th>
               </tr>
             </thead>
             <tbody>
-              {filteredProducts.map((product) => {
+              {filteredProducts.map((product, index) => {
                 return (
                   <tr key={product.id}>
+                    <td>{index + 1}</td>
                     <td>{product.title}</td>
                     <td>{product.description}</td>
                     <td>{product.brand}</td>
@@ -92,7 +103,7 @@ const Products = () => {
                       <img src={product.images[0]} className="img-fluid" alt="" height="100px" width="100px"/>
                     </td>
                     <td>
-                        <button className="btn btn-danger" onSubmit={handleDelete}>Delete</button>  
+                    <FaTrash className="d-flex justify-content-center w-100" onClick={() => handleDelete(product.id)} style={{color: 'red', cursor: 'pointer'}}>Delete</FaTrash>  
                     </td>
                   </tr>
                 );
@@ -100,7 +111,7 @@ const Products = () => {
             </tbody>
           </table>
         </ul>
-        <ul className="list-group"></ul>
+        : <h4 className="d-flex justify-content-center w-100 text-dark mt-4">No Products to Display</h4>}
       </div>
     </>
   );

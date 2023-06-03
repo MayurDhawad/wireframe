@@ -1,18 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "./auth";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const auth = useAuth();
+  let navigate = useNavigate("");
 
   const logout = () =>{
+    navigate("/login");
     auth.logout()
+    
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <Link className="navbar-brand text-uppercase" to="/">
-          Wireframe
+          Assignment
         </Link>
         <button
           className="navbar-toggler"
